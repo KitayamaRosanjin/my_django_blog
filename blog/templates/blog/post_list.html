@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ブログ - 記事一覧</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <h1>記事一覧</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                <small> by {{ post.author.username }} ({{ post.created_at|date:"Y-m-d" }})</small>
+            </li>
+        {% empty %}
+            <li>まだ記事がありません。新規記事を作成してください。</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'post_create' %}">新規記事を作成</a>
+</body>
+</html>

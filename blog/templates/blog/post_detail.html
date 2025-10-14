@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    {% load static %} 
+<link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p><strong>著者:</strong> {{ post.author.username }}</p>  <!-- ユーザー名表示 -->
+    <p><strong>作成日:</strong> {{ post.created_at|date:"Y-m-d H:i" }}</p>
+    <p><strong>更新日:</strong> {{ post.updated_at|date:"Y-m-d H:i" }}</p>
+    <div>{{ post.content|linebreaks }}</div>  <!-- 改行を<br>に変換 -->
+    <a href="{% url 'post_list' %}">記事一覧に戻る</a>
+</body>
+</html>
