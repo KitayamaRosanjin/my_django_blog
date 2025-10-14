@@ -125,3 +125,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'  # 未ログイン時のリダイレクト先をカスタムに
 LOGIN_REDIRECT_URL = '/'  # ログイン成功後、一覧ページに
 LOGOUT_REDIRECT_URL = '/'  # ログアウト後、一覧ページに
+
+import os  # 追加（BASE_DIRで使用）
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # 追加: 本番用静的ファイル収集先
