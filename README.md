@@ -1,37 +1,51 @@
 # Djangoブログシステム
 
-Djangoフレームワークを使ったシンプルなブログアプリケーション。モデル、ビュー、テンプレート、認証を学習するために構築しました。
+Djangoフレームワークを使って構築したシンプルなブログポートフォリオプロジェクトです。Web開発の基礎（モデル、ビュー、テンプレート、フォーム、ユーザー認証）を学習するために作成しました。転職や副業の文脈ではなく、純粋な技術習得を目的としています。
 
-## 背景と目的
-- DjangoのMTVパターンを実践し、Webアプリの全体像を理解。
-- 仮想環境から始め、ORM (モデル)、Class-Based Views、フォーム、ユーザー認証を一通り実装。
-- 拡張性を意識: タグや画像アップロードを将来追加可能。
+## プロジェクトの背景と目的
+- **学習動機**: Djangoの公式ドキュメントを基に、MTV（Model-Template-View）パターンを実際に実装。仮想環境構築から始め、ORMのクエリ、Class-Based Views、CSRF保護、ログイン認証までを一通り体験。
+- **設計の考え方**:
+  - シンプルさを優先: 記事のCRUD操作を中心に、拡張性を考慮（将来のコメント機能や画像アップロード可能）。
+  - ベストプラクティス: マイグレーション管理、.gitignoreで環境分離、UTF-8エンコーディング徹底。
+  - トラブルシューティング: エンコーディングエラーやテンプレートパスミスを解決し、堅牢性を確保。
 
 ## 技術スタック
-- Django 5.2.7
-- Python 3.13
-- SQLite (開発DB)
-- HTML/CSS (静的ファイル管理)
+- **バックエンド**: Django 5.2.7 (ORM, Views, Forms, Authentication)
+- **フロントエンド**: HTML/CSS (静的ファイル管理, Bootstrap未使用で純粋Djangoテンプレート)
+- **データベース**: SQLite (開発用)
+- **環境**: Python 3.13 + venv (仮想環境)
 
-## 機能
-- 記事一覧/詳細表示
-- 新規記事作成 (ログイン必須)
-- ユーザー認証 (ログイン/ログアウト)
-- 管理画面 (/admin/) で記事編集
+## 機能概要
+- **記事一覧/詳細表示**: 全ユーザーの記事を閲覧。空時は「まだ記事がありません」のメッセージ。
+- **新規記事作成**: ログイン必須。著者を自動紐付け、保存後一覧に戻る。
+- **ユーザー認証**: Django内蔵のログイン/ログアウト。未認証時は /login/ にリダイレクト。
+- **管理画面**: /admin/ で記事CRUD可能（スーパーユーザー作成必須）。
+
+<image-card alt="記事一覧スクショ" src="screenshot_post_list.png" ></image-card>  <!-- 後でローカルスクショを追加 -->
+<image-card alt="記事作成フォーム" src="screenshot_post_form.png" ></image-card>
 
 ## セットアップ手順
-1. リポジトリクローン: `git clone <repo-url>`
-2. 仮想環境作成: `python -m venv venv`
-3. アクティベート: `venv\Scripts\activate` (Windows)
-4. 依存インストール: `pip install -r requirements.txt`
-5. マイグレーション: `python manage.py migrate`
-6. スーパーユーザー作成: `python manage.py createsuperuser`
-7. サーバー起動: `python manage.py runserver`
-8. ブラウザで http://127.0.0.1:8000/ アクセス
+1. リポジトリクローン: `git clone https://github.com/KitayamaRosanjin/my_django_blog.git`
+2. ディレクトリ移動: `cd my_django_blog`
+3. 仮想環境作成: `python -m venv venv`
+4. アクティベート: `venv\Scripts\activate` (Windows) / `source venv/bin/activate` (macOS/Linux)
+5. 依存インストール: `pip install -r requirements.txt`
+6. マイグレーション: `python manage.py migrate`
+7. スーパーユーザー作成: `python manage.py createsuperuser` (ユーザー名/パスワード入力)
+8. サーバー起動: `python manage.py runserver`
+9. ブラウザで http://127.0.0.1:8000/ にアクセス。ログイン後、記事作成テスト。
 
-## 改善点
-- 画像アップロード (Mediaファイル)
-- APIエンドポイント (Django REST Framework)
-- テストコード (unittest)
+**注意**: 本番デプロイ時はDEBUG=Falseに変更し、SECRET_KEYを環境変数化。
 
-フィードバック歓迎！ Djangoの柔軟性を体感できました。
+## 今後の改善点
+- 画像アップロード (Mediaファイル設定)。
+- コメント機能 (Commentモデル追加)。
+- API化 (Django REST Framework導入)。
+- テストコード (unittestでビュー/モデルテスト)。
+
+このプロジェクトを通じて、Djangoの柔軟性とエラーハンドリングを学びました。フィードバック歓迎です！
+
+---
+
+**作成日**: 2025年10月15日  
+**作者**: KitayamaRosanjin
