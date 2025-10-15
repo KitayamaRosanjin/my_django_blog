@@ -1,9 +1,7 @@
-asgiref==3.10.0
 Django==5.2.7
 gunicorn==23.0.0
-packaging==25.0
+dj-database-url==2.2.0
+psycopg==3.2.1
+asgiref==3.10.0
 sqlparse==0.5.3
 tzdata==2025.2
-venv\Scripts\activate
-pip install psycopg2-binary
-pip freeze > requirements.txt
